@@ -1,16 +1,18 @@
-# This is a sample Python script.
+from PyQt6.QtWidgets import QApplication, QWidget
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import sys # Только для доступа к аргументам командной строки
+
+# Приложению нужен один (и только один) экземпляр QApplication.
+# Передаём sys.argv, чтобы разрешить аргументы командной строки для приложения.
+# Если не будете использовать аргументы командной строки, QApplication([]) тоже работает
+app = QApplication(sys.argv)
+
+# Создаём виджет Qt — окно.
+window = QWidget()
+window.show()  # Важно: окно по умолчанию скрыто.
+
+# Запускаем цикл событий.
+app.exec()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Приложение не доберётся сюда, пока вы не выйдете и цикл
