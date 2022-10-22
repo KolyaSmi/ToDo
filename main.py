@@ -1,3 +1,3 @@
-from interfase import Window
+from interfase import MainWindow
 
-Window.initWindow()
+MainWindow.initMainWindow()
