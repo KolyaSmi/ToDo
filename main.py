@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QPushButton, QMainWindow
+from PyQt6.QtWidgets import QApplication, QLineEdit, QLabel, QMainWindow, QVBoxLayout, QWidget
 
 import sys # Только для доступа к аргументам командной строки
 
@@ -17,14 +17,32 @@ class MainWindow(QMainWindow):
 
     self.setWindowTitle("To-Do")
 
-    button = QPushButton("Press Me!")
+    self.label = QLabel()
 
-    button.setCheckable(True)#Для отслеживания события click
-    button.clicked.connect(self.toggleButton)#Запуск функции по клику
-    button.setChecked(self.button_is_checked)
+    self.input = QLineEdit()
+    self.input.textChanged.connect(self.label.setText)
+    self.input.setFixedSize(200, 50)
+    f = self.input.font()
+    f.setPointSize(20)
+    self.input.setFont(f)
+
+    layout = QVBoxLayout()
+    layout.addWidget(self.input)
+    layout.addWidget(self.label)
+
+    container = QWidget()
+    container.setLayout(layout)
+
+    self.setCentralWidget(container)
+
+    # button = QPushButton("Press Me!")
+    #
+    # button.setCheckable(True)#Для отслеживания события click
+    # button.clicked.connect(self.toggleButton)#Запуск функции по клику
+    # button.setChecked(self.button_is_checked)
 
     # Устанавливаем центральный виджет Window.
-    self.setCentralWidget(button)
+    # self.setCentralWidget(button)
 
   def toggleButton(self, checked):
     self.button_is_checked = checked
