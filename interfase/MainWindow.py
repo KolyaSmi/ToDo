@@ -12,22 +12,37 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(800, 550)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(10, 10, 50, 50))
-        self.pushButton.setObjectName("pushButton")
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setEnabled(True)
-        self.frame.setGeometry(QtCore.QRect(20, 70, 761, 491))
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
+        self.addButton = QtWidgets.QPushButton(self.centralwidget)
+        self.addButton.setGeometry(QtCore.QRect(20, 10, 50, 50))
+        self.addButton.setStyleSheet("background-color: rgb(67, 183, 103);\n"
+"color: rgb(255, 255, 255);\n"
+"")
+        self.addButton.setObjectName("addButton")
+        self.objFeeld = QtWidgets.QFrame(self.centralwidget)
+        self.objFeeld.setEnabled(True)
+        self.objFeeld.setGeometry(QtCore.QRect(20, 70, 761, 480))
+        self.objFeeld.setStyleSheet("background-color: rgb(218, 218, 218);\n"
+"")
+        self.objFeeld.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.objFeeld.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.objFeeld.setObjectName("objFeeld")
+        self.label = QtWidgets.QLabel(self.objFeeld)
+        self.label.setGeometry(QtCore.QRect(70, 20, 671, 31))
+        self.label.setStyleSheet("background-color: rgb(126, 126, 126);")
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.objFeeld)
+        self.label_2.setGeometry(QtCore.QRect(20, 20, 51, 31))
+        self.label_2.setStyleSheet("background-color: rgb(126, 126, 126);\n"
+"background-color: rgb(180, 180, 180);")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.objFeeld)
+        self.label_3.setGeometry(QtCore.QRect(20, 50, 721, 51))
+        self.label_3.setStyleSheet("background-color: rgb(92, 92, 92);")
+        self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -35,7 +50,11 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ToDu"))
-        self.pushButton.setText(_translate("MainWindow", "add"))
+        self.addButton.setText(_translate("MainWindow", "add"))
+        self.label.setText(_translate("MainWindow", "Name"))
+        self.label_2.setText(_translate("MainWindow", "!"))
+        self.label_3.setText(_translate("MainWindow", "Text\nText\nText"))
+
 
 def initMainWindow():
     import sys
