@@ -48,90 +48,6 @@ width: 100px;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>800</width>
-       <height>550</height>
-      </rect>
-     </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>798</width>
-        <height>548</height>
-       </rect>
-      </property>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>70</y>
-         <width>721</width>
-         <height>51</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(92, 92, 92);</string>
-       </property>
-       <property name="text">
-        <string>Text</string>
-       </property>
-       <property name="margin">
-        <number>20</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>40</y>
-         <width>671</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(126, 126, 126);
-</string>
-       </property>
-       <property name="text">
-        <string>Name</string>
-       </property>
-       <property name="margin">
-        <number>20</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>40</y>
-         <width>51</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(126, 126, 126);
-background-color: rgb(180, 180, 180);
-font-size: 26px;
-color: white;</string>
-       </property>
-       <property name="text">
-        <string>!!!</string>
-       </property>
-       <property name="margin">
-        <number>22</number>
-       </property>
-      </widget>
-     </widget>
-    </widget>
     <widget class="QPushButton" name="addButton">
      <property name="geometry">
       <rect>
@@ -143,17 +59,411 @@ color: white;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
+background-image: url(:/btn/add_button.png);
 border: none;
 outline: none;
 font-size: 32px;
 text-transform: uppercase;
 border-radius: 5px;
-font-weight: bold;
-background-image: url(:/btn/add_button.svg);</string>
+font-weight: bold;</string>
      </property>
      <property name="text">
       <string/>
      </property>
+    </widget>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>761</width>
+       <height>471</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>761</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>721</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(225, 225, 225, 150);
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Text</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size: 26px;
+background-color: rgb(125, 232, 109);
+color: white;
+border-top-left-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>!!!</string>
+          </property>
+          <property name="margin">
+           <number>22</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>671</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(228, 247, 246);
+border-top-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Name</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_2">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>721</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(225, 225, 225, 150);
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Text</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_11">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size: 26px;
+background-color: rgb(125, 232, 109);
+color: white;
+border-top-left-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>!!!</string>
+          </property>
+          <property name="margin">
+           <number>22</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>671</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(228, 247, 246);
+border-top-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Name</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label_13">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>721</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(225, 225, 225, 150);
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Text</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_14">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size: 26px;
+background-color: rgb(125, 232, 109);
+color: white;
+border-top-left-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>!!!</string>
+          </property>
+          <property name="margin">
+           <number>22</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_15">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>671</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(228, 247, 246);
+border-top-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Name</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>721</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(225, 225, 225, 150);
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Text</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_17">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size: 26px;
+background-color: rgb(125, 232, 109);
+color: white;
+border-top-left-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>!!!</string>
+          </property>
+          <property name="margin">
+           <number>22</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_18">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>671</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(228, 247, 246);
+border-top-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Name</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_5">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label_19">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>721</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(225, 225, 225, 150);
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Text</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_20">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size: 26px;
+background-color: rgb(125, 232, 109);
+color: white;
+border-top-left-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>!!!</string>
+          </property>
+          <property name="margin">
+           <number>22</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_21">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>10</y>
+            <width>671</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(228, 247, 246);
+border-top-right-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Name</string>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>

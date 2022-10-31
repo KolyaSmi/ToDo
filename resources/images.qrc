@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="btn">
-    <file>add_button.svg</file>
+    <file>bg.png</file>
+    <file>add_button.png</file>
   </qresource>
 </RCC>
