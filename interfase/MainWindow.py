@@ -12,26 +12,25 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 550)
-        MainWindow.setMinimumSize(QtCore.QSize(800, 550))
+        MainWindow.resize(780, 550)
+        MainWindow.setMinimumSize(QtCore.QSize(780, 550))
         MainWindow.setMaximumSize(QtCore.QSize(800, 550))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.objFeeld = QtWidgets.QFrame(self.centralwidget)
         self.objFeeld.setEnabled(True)
-        self.objFeeld.setGeometry(QtCore.QRect(0, 0, 800, 550))
+        self.objFeeld.setGeometry(QtCore.QRect(-1, -1, 801, 552))
         self.objFeeld.setStyleSheet("background-color: rgb(218, 218, 218);\n"
-"background-image: url(../resources/bg.png);\n"
-"width: 100px;")
+"background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/bg_3.png);\n")
         self.objFeeld.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.objFeeld.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.objFeeld.setObjectName("objFeeld")
         self.addButton = QtWidgets.QPushButton(self.objFeeld)
         self.addButton.setEnabled(True)
-        self.addButton.setGeometry(QtCore.QRect(740, 490, 50, 50))
+        self.addButton.setGeometry(QtCore.QRect(700, 490, 50, 50))
         self.addButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.addButton.setStyleSheet("QPushButton {\n"
-"    background-image: url(../resources/add_button.png);\n"
+"    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button.png);\n"
 "    border: none;\n"
 "    outline: none;\n"
 "    border-radius: 5px;\n"
@@ -44,7 +43,7 @@ class Ui_MainWindow(object):
         self.addButton.setText("")
         self.addButton.setObjectName("addButton")
         self.scrollArea = QtWidgets.QScrollArea(self.objFeeld)
-        self.scrollArea.setGeometry(QtCore.QRect(20, 10, 761, 521))
+        self.scrollArea.setGeometry(QtCore.QRect(20, 10, 761, 470))
         self.scrollArea.setStyleSheet("border: none;\n"
 "background: rgba(255, 255, 255, 0);")
         self.scrollArea.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
@@ -62,6 +61,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setContentsMargins(0, 10, 0, 10)
         self.verticalLayout.setSpacing(20)
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.Item = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.Item.setEnabled(True)
         self.Item.setMinimumSize(QtCore.QSize(0, 110))
@@ -70,6 +70,7 @@ class Ui_MainWindow(object):
         self.Item.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.Item.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.Item.setObjectName("Item")
+
         self.label_3 = QtWidgets.QLabel(self.Item)
         self.label_3.setGeometry(QtCore.QRect(10, 40, 721, 61))
         self.label_3.setMinimumSize(QtCore.QSize(0, 61))
@@ -84,6 +85,7 @@ class Ui_MainWindow(object):
         self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.label_3.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
         self.label_3.setObjectName("label_3")
+
         self.label_2 = QtWidgets.QLabel(self.Item)
         self.label_2.setGeometry(QtCore.QRect(10, 10, 51, 31))
         self.label_2.setStyleSheet("font-size: 22px;\n"
@@ -100,6 +102,7 @@ class Ui_MainWindow(object):
 "padding-left: 15px;")
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.Item)
+
         self.Item_4 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.Item_4.setEnabled(True)
         self.Item_4.setMinimumSize(QtCore.QSize(0, 110))
@@ -214,6 +217,7 @@ class Ui_MainWindow(object):
 "padding-left: 15px;")
         self.label_54.setObjectName("label_54")
         self.verticalLayout.addWidget(self.Item_6)
+
         self.Item_3 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.Item_3.setEnabled(True)
         self.Item_3.setMinimumSize(QtCore.QSize(0, 110))
@@ -252,13 +256,59 @@ class Ui_MainWindow(object):
 "padding-left: 15px;")
         self.label_45.setObjectName("label_45")
         self.verticalLayout.addWidget(self.Item_3)
+
+
+
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.scrollArea.raise_()
         self.addButton.raise_()
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+    def createPoint(self, MainWindow):
+        self.Item_n = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.Item_n.setEnabled(True)
+        self.Item_n.setMinimumSize(QtCore.QSize(0, 110))
+        self.Item_n.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.Item_n.setStyleSheet("background: none;")
+        self.Item_n.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.Item_n.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.Item_n.setObjectName("Item_3")
+        self.label_n_1 = QtWidgets.QLabel(self.Item_n)
+        self.label_n_1.setGeometry(QtCore.QRect(10, 40, 721, 61))
+        self.label_n_1.setMinimumSize(QtCore.QSize(0, 61))
+        self.label_n_1.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
+        self.label_n_1.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
+                                "border-bottom-left-radius: 10px;\n"
+                                "border-bottom-right-radius: 10px;\n"
+                                "font-size: 20px;\n"
+                                "padding: 5px 15px 5px 15px;")
+        self.label_n_1.setTextFormat(QtCore.Qt.TextFormat.AutoText)
+        self.label_n_1.setScaledContents(False)
+        self.label_n_1.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.label_n_1.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
+        self.label_n_1.setObjectName("label_43")
+        self.label_n_2 = QtWidgets.QLabel(self.Item_n)
+        self.label_n_2.setGeometry(QtCore.QRect(10, 10, 51, 31))
+        self.label_n_2.setStyleSheet("font-size: 22px;\n"
+                                "background-color: rgb(125, 232, 109);\n"
+                                "color: white;\n"
+                                "border-top-left-radius: 10px;")
+        self.label_n_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_n_2.setObjectName("label_44")
+        self.label_n_3 = QtWidgets.QLabel(self.Item_n)
+        self.label_n_3.setGeometry(QtCore.QRect(60, 10, 671, 31))
+        self.label_n_3.setStyleSheet("background-color: rgb(228, 247, 246);\n"
+                                "border-top-right-radius: 10px;\n"
+                                "font-size: 18px;\n"
+                                "padding-left: 15px;")
+        self.label_n_3.setObjectName("label_45")
+        self.verticalLayout.addWidget(self.Item_n)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -278,13 +328,3 @@ class Ui_MainWindow(object):
         self.label_43.setText(_translate("MainWindow", "Lorem Ipsum"))
         self.label_44.setText(_translate("MainWindow", "!!!"))
         self.label_45.setText(_translate("MainWindow", "Name"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())
