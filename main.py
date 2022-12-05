@@ -1,23 +1,27 @@
-# from interfase import MainWindow
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QIcon
+
+import functions.functions
 from interfase.MainWindow import Ui_MainWindow
-from currency_converter import CurrencyConverter
+# from interfase.affairs import Affairs
 
-class CurrencyConv(QtWidgets.QMainWindow):
+
+class ToDo(QtWidgets.QMainWindow):
     def __init__(self):
-        super(CurrencyConv, self).__init__()
-        self.main = Ui_MainWindow()
-        self.main.setupUi(self)
-        self.main.createPoint(self)
-        self.main.createPoint(self)
+        super(ToDo, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        # self.affairs = Affairs()
+        # self.affairs.initAffairs(self)
+        self.ui.addButton.clicked.connect(lambda: self.ui.add_affairs(self))
+        # self.ui.addButton.clicked.connect(lambda: self.affairs.add_affairs(self.ui.scrollArea))
 
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = ToDo()
+    window.show()
 
-app = QtWidgets.QApplication(sys.argv)
-application = CurrencyConv()
-application.show()
-
-sys.exit(app.exec())
+    sys.exit(app.exec())
 
 #python -m PyQt6.uic.pyuic -x MainWindow.ui -o ./interfase/MainWindow.py

@@ -7,19 +7,22 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+import array as arr
 
+
+affairs = []
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(780, 550)
         MainWindow.setMinimumSize(QtCore.QSize(780, 550))
-        MainWindow.setMaximumSize(QtCore.QSize(800, 550))
+        MainWindow.setMaximumSize(QtCore.QSize(780, 550))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.objFeeld = QtWidgets.QFrame(self.centralwidget)
         self.objFeeld.setEnabled(True)
-        self.objFeeld.setGeometry(QtCore.QRect(-1, -1, 801, 552))
+        self.objFeeld.setGeometry(QtCore.QRect(-1, 0, 801, 552))
         self.objFeeld.setStyleSheet("background-color: rgb(218, 218, 218);\n"
 "background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/bg_3.png);\n")
         self.objFeeld.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -38,7 +41,11 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    background: green;\n"
+"    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button_hover.png);\n"
+"    border: none;\n"
+"    outline: none;\n"
+"    border-radius: 5px;\n"
+"    overflow: hidden;\n"
 "}")
         self.addButton.setText("")
         self.addButton.setObjectName("addButton")
@@ -62,203 +69,6 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(20)
         self.verticalLayout.setObjectName("verticalLayout")
 
-        self.Item = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.Item.setEnabled(True)
-        self.Item.setMinimumSize(QtCore.QSize(0, 110))
-        self.Item.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.Item.setStyleSheet("background: none;")
-        self.Item.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.Item.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.Item.setObjectName("Item")
-
-        self.label_3 = QtWidgets.QLabel(self.Item)
-        self.label_3.setGeometry(QtCore.QRect(10, 40, 721, 61))
-        self.label_3.setMinimumSize(QtCore.QSize(0, 61))
-        self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.label_3.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
-"border-bottom-left-radius: 10px;\n"
-"border-bottom-right-radius: 10px;\n"
-"font-size: 20px;\n"
-"padding: 5px 15px 5px 15px;")
-        self.label_3.setTextFormat(QtCore.Qt.TextFormat.AutoText)
-        self.label_3.setScaledContents(False)
-        self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.label_3.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
-        self.label_3.setObjectName("label_3")
-
-        self.label_2 = QtWidgets.QLabel(self.Item)
-        self.label_2.setGeometry(QtCore.QRect(10, 10, 51, 31))
-        self.label_2.setStyleSheet("font-size: 22px;\n"
-"background-color: rgb(125, 232, 109);\n"
-"color: white;\n"
-"border-top-left-radius: 10px;")
-        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.label = QtWidgets.QLabel(self.Item)
-        self.label.setGeometry(QtCore.QRect(60, 10, 671, 31))
-        self.label.setStyleSheet("background-color: rgb(228, 247, 246);\n"
-"border-top-right-radius: 10px;\n"
-"font-size: 18px;\n"
-"padding-left: 15px;")
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.Item)
-
-        self.Item_4 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.Item_4.setEnabled(True)
-        self.Item_4.setMinimumSize(QtCore.QSize(0, 110))
-        self.Item_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.Item_4.setStyleSheet("background: none;")
-        self.Item_4.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.Item_4.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.Item_4.setObjectName("Item_4")
-        self.label_46 = QtWidgets.QLabel(self.Item_4)
-        self.label_46.setGeometry(QtCore.QRect(10, 40, 721, 61))
-        self.label_46.setMinimumSize(QtCore.QSize(0, 61))
-        self.label_46.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.label_46.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
-"border-bottom-left-radius: 10px;\n"
-"border-bottom-right-radius: 10px;\n"
-"font-size: 20px;\n"
-"padding: 5px 15px 5px 15px;")
-        self.label_46.setTextFormat(QtCore.Qt.TextFormat.AutoText)
-        self.label_46.setScaledContents(False)
-        self.label_46.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.label_46.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
-        self.label_46.setObjectName("label_46")
-        self.label_47 = QtWidgets.QLabel(self.Item_4)
-        self.label_47.setGeometry(QtCore.QRect(10, 10, 51, 31))
-        self.label_47.setStyleSheet("font-size: 22px;\n"
-"background-color: rgb(125, 232, 109);\n"
-"color: white;\n"
-"border-top-left-radius: 10px;")
-        self.label_47.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_47.setObjectName("label_47")
-        self.label_48 = QtWidgets.QLabel(self.Item_4)
-        self.label_48.setGeometry(QtCore.QRect(60, 10, 671, 31))
-        self.label_48.setStyleSheet("background-color: rgb(228, 247, 246);\n"
-"border-top-right-radius: 10px;\n"
-"font-size: 18px;\n"
-"padding-left: 15px;")
-        self.label_48.setObjectName("label_48")
-        self.verticalLayout.addWidget(self.Item_4)
-        self.Item_5 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.Item_5.setEnabled(True)
-        self.Item_5.setMinimumSize(QtCore.QSize(0, 110))
-        self.Item_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.Item_5.setStyleSheet("background: none;")
-        self.Item_5.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.Item_5.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.Item_5.setObjectName("Item_5")
-        self.label_49 = QtWidgets.QLabel(self.Item_5)
-        self.label_49.setGeometry(QtCore.QRect(10, 40, 721, 61))
-        self.label_49.setMinimumSize(QtCore.QSize(0, 61))
-        self.label_49.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.label_49.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
-"border-bottom-left-radius: 10px;\n"
-"border-bottom-right-radius: 10px;\n"
-"font-size: 20px;\n"
-"padding: 5px 15px 5px 15px;")
-        self.label_49.setTextFormat(QtCore.Qt.TextFormat.AutoText)
-        self.label_49.setScaledContents(False)
-        self.label_49.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.label_49.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
-        self.label_49.setObjectName("label_49")
-        self.label_50 = QtWidgets.QLabel(self.Item_5)
-        self.label_50.setGeometry(QtCore.QRect(10, 10, 51, 31))
-        self.label_50.setStyleSheet("font-size: 22px;\n"
-"background-color: rgb(125, 232, 109);\n"
-"color: white;\n"
-"border-top-left-radius: 10px;")
-        self.label_50.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_50.setObjectName("label_50")
-        self.label_51 = QtWidgets.QLabel(self.Item_5)
-        self.label_51.setGeometry(QtCore.QRect(60, 10, 671, 31))
-        self.label_51.setStyleSheet("background-color: rgb(228, 247, 246);\n"
-"border-top-right-radius: 10px;\n"
-"font-size: 18px;\n"
-"padding-left: 15px;")
-        self.label_51.setObjectName("label_51")
-        self.verticalLayout.addWidget(self.Item_5)
-        self.Item_6 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.Item_6.setEnabled(True)
-        self.Item_6.setMinimumSize(QtCore.QSize(0, 110))
-        self.Item_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.Item_6.setStyleSheet("background: none;")
-        self.Item_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.Item_6.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.Item_6.setObjectName("Item_6")
-        self.label_52 = QtWidgets.QLabel(self.Item_6)
-        self.label_52.setGeometry(QtCore.QRect(10, 40, 721, 61))
-        self.label_52.setMinimumSize(QtCore.QSize(0, 61))
-        self.label_52.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.label_52.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
-"border-bottom-left-radius: 10px;\n"
-"border-bottom-right-radius: 10px;\n"
-"font-size: 20px;\n"
-"padding: 5px 15px 5px 15px;")
-        self.label_52.setTextFormat(QtCore.Qt.TextFormat.AutoText)
-        self.label_52.setScaledContents(False)
-        self.label_52.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.label_52.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
-        self.label_52.setObjectName("label_52")
-        self.label_53 = QtWidgets.QLabel(self.Item_6)
-        self.label_53.setGeometry(QtCore.QRect(10, 10, 51, 31))
-        self.label_53.setStyleSheet("font-size: 22px;\n"
-"background-color: rgb(125, 232, 109);\n"
-"color: white;\n"
-"border-top-left-radius: 10px;")
-        self.label_53.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_53.setObjectName("label_53")
-        self.label_54 = QtWidgets.QLabel(self.Item_6)
-        self.label_54.setGeometry(QtCore.QRect(60, 10, 671, 31))
-        self.label_54.setStyleSheet("background-color: rgb(228, 247, 246);\n"
-"border-top-right-radius: 10px;\n"
-"font-size: 18px;\n"
-"padding-left: 15px;")
-        self.label_54.setObjectName("label_54")
-        self.verticalLayout.addWidget(self.Item_6)
-
-        self.Item_3 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.Item_3.setEnabled(True)
-        self.Item_3.setMinimumSize(QtCore.QSize(0, 110))
-        self.Item_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.Item_3.setStyleSheet("background: none;")
-        self.Item_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.Item_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.Item_3.setObjectName("Item_3")
-        self.label_43 = QtWidgets.QLabel(self.Item_3)
-        self.label_43.setGeometry(QtCore.QRect(10, 40, 721, 61))
-        self.label_43.setMinimumSize(QtCore.QSize(0, 61))
-        self.label_43.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
-        self.label_43.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
-"border-bottom-left-radius: 10px;\n"
-"border-bottom-right-radius: 10px;\n"
-"font-size: 20px;\n"
-"padding: 5px 15px 5px 15px;")
-        self.label_43.setTextFormat(QtCore.Qt.TextFormat.AutoText)
-        self.label_43.setScaledContents(False)
-        self.label_43.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.label_43.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
-        self.label_43.setObjectName("label_43")
-        self.label_44 = QtWidgets.QLabel(self.Item_3)
-        self.label_44.setGeometry(QtCore.QRect(10, 10, 51, 31))
-        self.label_44.setStyleSheet("font-size: 22px;\n"
-"background-color: rgb(125, 232, 109);\n"
-"color: white;\n"
-"border-top-left-radius: 10px;")
-        self.label_44.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_44.setObjectName("label_44")
-        self.label_45 = QtWidgets.QLabel(self.Item_3)
-        self.label_45.setGeometry(QtCore.QRect(60, 10, 671, 31))
-        self.label_45.setStyleSheet("background-color: rgb(228, 247, 246);\n"
-"border-top-right-radius: 10px;\n"
-"font-size: 18px;\n"
-"padding-left: 15px;")
-        self.label_45.setObjectName("label_45")
-        self.verticalLayout.addWidget(self.Item_3)
-
-
-
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.scrollArea.raise_()
         self.addButton.raise_()
@@ -268,25 +78,24 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
-    def createPoint(self, MainWindow):
+    def add_item(self):
         self.Item_n = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.Item_n.setEnabled(True)
         self.Item_n.setMinimumSize(QtCore.QSize(0, 110))
         self.Item_n.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.Item_n.setStyleSheet("background: none;")
+        self.Item_n.setStyleSheet("background: rgb(1, 1, 1);")
         self.Item_n.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.Item_n.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.Item_n.setObjectName("Item_3")
+        self.Item_n.setObjectName("Item_n")
         self.label_n_1 = QtWidgets.QLabel(self.Item_n)
         self.label_n_1.setGeometry(QtCore.QRect(10, 40, 721, 61))
         self.label_n_1.setMinimumSize(QtCore.QSize(0, 61))
         self.label_n_1.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
         self.label_n_1.setStyleSheet("background: rgba(225, 225, 225, 150);\n"
-                                "border-bottom-left-radius: 10px;\n"
-                                "border-bottom-right-radius: 10px;\n"
-                                "font-size: 20px;\n"
-                                "padding: 5px 15px 5px 15px;")
+                                     "border-bottom-left-radius: 10px;\n"
+                                     "border-bottom-right-radius: 10px;\n"
+                                     "font-size: 20px;\n"
+                                     "padding: 5px 15px 5px 15px;")
         self.label_n_1.setTextFormat(QtCore.Qt.TextFormat.AutoText)
         self.label_n_1.setScaledContents(False)
         self.label_n_1.setAlignment(
@@ -296,35 +105,25 @@ class Ui_MainWindow(object):
         self.label_n_2 = QtWidgets.QLabel(self.Item_n)
         self.label_n_2.setGeometry(QtCore.QRect(10, 10, 51, 31))
         self.label_n_2.setStyleSheet("font-size: 22px;\n"
-                                "background-color: rgb(125, 232, 109);\n"
-                                "color: white;\n"
-                                "border-top-left-radius: 10px;")
+                                     "background-color: rgb(125, 232, 109);\n"
+                                     "color: white;\n"
+                                     "border-top-left-radius: 10px;")
         self.label_n_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_n_2.setObjectName("label_44")
         self.label_n_3 = QtWidgets.QLabel(self.Item_n)
         self.label_n_3.setGeometry(QtCore.QRect(60, 10, 671, 31))
         self.label_n_3.setStyleSheet("background-color: rgb(228, 247, 246);\n"
-                                "border-top-right-radius: 10px;\n"
-                                "font-size: 18px;\n"
-                                "padding-left: 15px;")
+                                     "border-top-right-radius: 10px;\n"
+                                     "font-size: 18px;\n"
+                                     "padding-left: 15px;")
         self.label_n_3.setObjectName("label_45")
         self.verticalLayout.addWidget(self.Item_n)
+        return self.Item_n
+
+    def add_affairs(self, MainWindow):
+        affairs.append(self.add_item())
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ToDo"))
-        self.label_3.setText(_translate("MainWindow", "Lorem Ipsum"))
-        self.label_2.setText(_translate("MainWindow", "!!!"))
-        self.label.setText(_translate("MainWindow", "Name"))
-        self.label_46.setText(_translate("MainWindow", "Lorem Ipsum"))
-        self.label_47.setText(_translate("MainWindow", "!!!"))
-        self.label_48.setText(_translate("MainWindow", "Name"))
-        self.label_49.setText(_translate("MainWindow", "Lorem Ipsum"))
-        self.label_50.setText(_translate("MainWindow", "!!!"))
-        self.label_51.setText(_translate("MainWindow", "Name"))
-        self.label_52.setText(_translate("MainWindow", "Lorem Ipsum"))
-        self.label_53.setText(_translate("MainWindow", "!!!"))
-        self.label_54.setText(_translate("MainWindow", "Name"))
-        self.label_43.setText(_translate("MainWindow", "Lorem Ipsum"))
-        self.label_44.setText(_translate("MainWindow", "!!!"))
-        self.label_45.setText(_translate("MainWindow", "Name"))
