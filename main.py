@@ -4,7 +4,6 @@ from PyQt6.QtGui import QIcon
 
 import functions.functions
 from interfase.MainWindow import Ui_MainWindow
-# from interfase.affairs import Affairs
 
 
 class ToDo(QtWidgets.QMainWindow):
@@ -12,10 +11,14 @@ class ToDo(QtWidgets.QMainWindow):
         super(ToDo, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # self.affairs = Affairs()
-        # self.affairs.initAffairs(self)
-        self.ui.addButton.clicked.connect(lambda: self.ui.add_affairs(self))
-        # self.ui.addButton.clicked.connect(lambda: self.affairs.add_affairs(self.ui.scrollArea))
+        self.affairs = functions.functions.initJson()
+        for x in self.affairs:
+            self.ui.add_affairs(self, x)
+        self.ui.addButton.clicked.connect(lambda: self.new_affairs())
+
+    # def new_affairs(self):
+        # functions.functions.
+        # self.ui.add_affairs(self, self.affairs)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
