@@ -190,6 +190,8 @@ class Add_Box (QtWidgets.QDialog):
     def __init__(self, parent= None):
         super(Add_Box, self).__init__(parent)
 
+        self.priority = 1
+
         self.resize(762, 263)
 
         self.verticalLayout = QtWidgets.QVBoxLayout(self)
@@ -201,6 +203,7 @@ class Add_Box (QtWidgets.QDialog):
 
         self.name = QtWidgets.QTextEdit(self.frame)
         self.name.setGeometry(QtCore.QRect(71, 20, 490, 31))
+        self.name.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.name.setStyleSheet("background-color: rgb(217, 217, 217);"
                                 "border: none;"
                                 "border-radius: 10px;"
@@ -219,6 +222,7 @@ class Add_Box (QtWidgets.QDialog):
 
         self.text = QtWidgets.QTextEdit(self.frame)
         self.text.setGeometry(QtCore.QRect(20, 71, 722, 120))
+        self.text.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.text.setStyleSheet("background-color: rgb(217, 217, 217);"
                                 "border: none;"
                                 "border-radius: 10px;"
@@ -228,6 +232,9 @@ class Add_Box (QtWidgets.QDialog):
 
         self.priority_1 = QtWidgets.QRadioButton(self.frame)
         self.priority_1.setGeometry(QtCore.QRect(20, 211, 31, 31))
+        self.priority_1.setChecked(True)
+        # self.priority_1.setDown(True)
+        # self.priority_1.toggled.connect(self.new_priority(1))
         self.priority_1.setStyleSheet("QRadioButton {"
                                       "background-color: rgb(169, 220, 170);"
                                       "border-radius: 10px;"
@@ -240,6 +247,7 @@ class Add_Box (QtWidgets.QDialog):
                                       "}")
         self.priority_2 = QtWidgets.QRadioButton(self.frame)
         self.priority_2.setGeometry(QtCore.QRect(71, 211, 31, 31))
+        # self.priority_2.toggled.connect(self.new_priority(2))
         self.priority_2.setStyleSheet("QRadioButton {"
                                       "background-color: rgb(232, 228, 148);"
                                       "border-radius: 10px"
@@ -250,6 +258,7 @@ class Add_Box (QtWidgets.QDialog):
                                       "}")
         self.priority_3 = QtWidgets.QRadioButton(self.frame)
         self.priority_3.setGeometry(QtCore.QRect(122, 211, 31, 31))
+        # self.priority_3.toggled.connect(self.new_priority(3))
         self.priority_3.setStyleSheet("QRadioButton {"
                                       "background-color: rgb(226, 166, 166);"
                                       "border-radius: 10px"
@@ -273,3 +282,7 @@ class Add_Box (QtWidgets.QDialog):
                                       "background-color: rgb(80, 172, 83);"
                                       "border-radius: 10px"
                                       "}")
+
+
+    def new_priority(self, new_priority):
+        self.priority = new_priority
