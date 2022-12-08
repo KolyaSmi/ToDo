@@ -1,11 +1,25 @@
 import json
+import os
 
 def initJson():
     with open("resources/affairs.json","r") as fp:
-        if fp != None:
+        if os.stat("resources/affairs.json").st_size != 0:
             affairs_json = fp.read()
             affairs = json.loads(affairs_json)
-            return affairs
+        else:
+            affairs_json = {
+                          "affairs": [
+                            {
+                              "name": "Накормить кота",
+                              "text": "Вчера кот мало ел, поэтому нужно не забыть его покормить!",
+                              "data": "21.09.2002",
+                              "priority": 3
+                            }
+                          ]
+                        }
+            affairs = json.dumps(affairs_json)
+            affairs = json.loads(affairs)
+        return affairs
 
 def new_affairs_json(affairs, name, text, data, priority):
     item = json.dumps({"name": name, "text": text, "data": data, "priority": priority})
