@@ -24,23 +24,23 @@ class ToDo(QtWidgets.QMainWindow):
     def new_affairs(self):
         add = Add_Box(self)
 
-        add.button_add.clicked.connect(lambda: {self.new_json(add)})
+        add.button_add.clicked.connect(lambda: {self.button_add_cliched(add)})
 
         add.exec()
 
-
-    def new_json(self, add):
-        if add.priority_1.isChecked():
-            add.priority = 1
-        if add.priority_2.isChecked():
-            add.priority = 2
-        if add.priority_3.isChecked():
-            add.priority = 3
-        self.affairs = functions.functions.new_affairs_json(self.affairs, add.name.toPlainText(), add.text.toPlainText(),
-                                                            add.data.toPlainText(), add.priority)
-        self.num_aff += 1
-        self.ui.add_affairs(self, self.affairs["affairs"][self.num_aff])
-        add.close()
+    def button_add_cliched(self, add):
+        if add.checkRegulations():
+            if add.priority_1.isChecked():
+                add.priority = 1
+            if add.priority_2.isChecked():
+                add.priority = 2
+            if add.priority_3.isChecked():
+                add.priority = 3
+            self.affairs = functions.functions.new_affairs_json(self.affairs, add.name.toPlainText(), add.text.toPlainText(),
+                                                                add.data.toPlainText(), add.priority)
+            self.num_aff += 1
+            self.ui.add_affairs(self, self.affairs["affairs"][self.num_aff])
+            add.close()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
