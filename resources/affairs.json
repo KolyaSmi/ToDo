@@ -1,33 +1,33 @@
 {
   "affairs": [
     {
-      "name": "\u041d\u0430\u043a\u043e\u0440\u043c\u0438\u0442\u044c \u043a\u043e\u0442\u0430",
-      "text": "\u0412\u0447\u0435\u0440\u0430 \u043a\u043e\u0442 \u043c\u0430\u043b\u043e \u0435\u043b, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u043d\u0443\u0436\u043d\u043e \u043d\u0435 \u0437\u0430\u0431\u044b\u0442\u044c \u0435\u0433\u043e \u043f\u043e\u043a\u043e\u0440\u043c\u0438\u0442\u044c!",
-      "data": "21.09.2002",
+      "name": "1",
+      "text": "",
+      "data": "10.01.2002",
+      "priority": 1
+    },
+    {
+      "name": "2",
+      "text": "",
+      "data": "",
       "priority": 3
     },
     {
-      "name": "1",
-      "text": "1",
+      "name": "4",
+      "text": "text",
       "data": "",
       "priority": 1
     },
     {
-      "name": "1",
-      "text": "",
+      "name": "2",
+      "text": "2",
       "data": "",
       "priority": 1
     },
     {
-      "name": "",
-      "text": "",
-      "data": "30.01.2002",
-      "priority": 1
-    },
-    {
-      "name": "",
-      "text": "",
-      "data": "12.01.2002",
+      "name": "3",
+      "text": "3",
+      "data": "",
       "priority": 1
     }
   ]

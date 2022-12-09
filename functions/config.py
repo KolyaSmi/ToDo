@@ -1,3 +1,4 @@
-from asyncio.windows_events import NULL
-
-affairs = NULL
+affairs = None
+affairs_mass = []
+del_button_mass = []
+num_add = -1

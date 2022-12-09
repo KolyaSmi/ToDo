@@ -2,22 +2,22 @@ import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QIcon
 
-import functions.functions
+# import functions.functions
+from functions import functions, config
 from interfase.MainWindow import Ui_MainWindow, Add_Box
 
 
 class ToDo(QtWidgets.QMainWindow):
     def __init__(self):
         super(ToDo, self).__init__()
-        self.num_aff = -1
+        # self.num_aff = -1
+        config.affairs = functions.initJson()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.affairs = functions.functions.initJson()
 
-        if self.affairs != None:
-            for x in self.affairs["affairs"]:
+        if config.affairs != None:
+            for x in config.affairs["affairs"]:
                 self.ui.add_affairs(self, x)
-                self.num_aff += 1
 
         self.ui.addButton.clicked.connect(lambda: self.new_affairs())
 
@@ -29,6 +29,7 @@ class ToDo(QtWidgets.QMainWindow):
         add.exec()
 
     def button_add_cliched(self, add):
+        config.affairs = functions.update_json()
         if add.checkRegulations():
             if add.priority_1.isChecked():
                 add.priority = 1
@@ -36,10 +37,10 @@ class ToDo(QtWidgets.QMainWindow):
                 add.priority = 2
             if add.priority_3.isChecked():
                 add.priority = 3
-            self.affairs = functions.functions.new_affairs_json(self.affairs, add.name.toPlainText(), add.text.toPlainText(),
+            config.affairs = functions.new_affairs_json(config.affairs, add.name.toPlainText(), add.text.toPlainText(),
                                                                 add.data.toPlainText(), add.priority)
-            self.num_aff += 1
-            self.ui.add_affairs(self, self.affairs["affairs"][self.num_aff])
+            config.num_aff = 1 + config.num_add
+            self.ui.add_affairs(self, config.affairs["affairs"][config.num_aff])
             add.close()
 
 if __name__ == "__main__":

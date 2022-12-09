@@ -8,15 +8,16 @@ import json
 import re
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import array as arr
 
-from PyQt6.QtGui import QWindow
-from PyQt6.QtWidgets import QMessageBox
+from functions import functions, config
 
-affairs_mass = []
 
 class Ui_MainWindow(object):
+
     def setupUi(self, MainWindow):
+
+        self.affairs_mass_new = []
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(780, 550)
         MainWindow.setMinimumSize(QtCore.QSize(780, 550))
@@ -27,7 +28,7 @@ class Ui_MainWindow(object):
         self.objFeeld.setEnabled(True)
         self.objFeeld.setGeometry(QtCore.QRect(-1, 0, 801, 552))
         self.objFeeld.setStyleSheet("background-color: rgb(218, 218, 218);\n"
-"background-image: url(resources/bg_4.png);\n")
+"background-image: url(resources/bg_5.png);\n")
         self.objFeeld.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.objFeeld.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.objFeeld.setObjectName("objFeeld")
@@ -39,14 +40,14 @@ class Ui_MainWindow(object):
 "    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button.png);\n"
 "    border: none;\n"
 "    outline: none;\n"
-"    border-radius: 5px;\n"
+"    border-radius: 10px;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button_hover.png);\n"
 "    border: none;\n"
 "    outline: none;\n"
-"    border-radius: 5px;\n"
+"    border-radius: 10px;\n"
 "}")
         self.addButton.setText("")
         self.addButton.setObjectName("addButton")
@@ -80,6 +81,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def add_item(self, affairs_json):
+        n = config.num_add
         self.Item_n = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.Item_n.setEnabled(True)
         if affairs_json["text"] != "":
@@ -136,17 +138,40 @@ class Ui_MainWindow(object):
 
         if affairs_json["data"] != "":
             self.label_n_4 = QtWidgets.QLabel(self.Item_n)
-            self.label_n_4.setGeometry(QtCore.QRect(631, 10, 100, 31))
+            self.label_n_4.setGeometry(QtCore.QRect(601, 10, 130, 31))
             self.label_n_4.setStyleSheet("background-color: rgb(215, 236, 235);\n"
                                          "border-top-right-radius: 10px;\n"
+                                         "border-top-left-radius: 5px;\n"
+                                         "border-bottom-left-radius: 5px;\n"
                                          "font-size: 18px;\n"
-                                         "padding-left: 5px;\n"
+                                         "padding-left: 2px;\n"
                                          "color: rgb(63, 63, 63)")
             self.label_n_4.setObjectName("label_45")
             self.verticalLayout.addWidget(self.Item_n)
             self.label_n_4.setText(affairs_json["data"])
 
         self.label_n_3.setText(affairs_json["name"])
+
+        self.delButton = QtWidgets.QPushButton(self.Item_n)
+        self.delButton.setGeometry(QtCore.QRect(705, 18, 15, 15))
+        self.delButton.setStyleSheet("QPushButton {"
+                                      "border: none;"
+                                      "outline: none;"
+                                      "background-color: rgb(169, 220, 170);"
+                                      "background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/del_button.png);"
+                                      "border-radius: 2px;"
+                                      "}"
+                                      "QPushButton:hover {"
+                                      "border: none;"
+                                      "outline: none;"
+                                      "background-color: rgb(80, 172, 83);"
+                                      "background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/del_button_hover.png);"
+                                      "border-radius: 2px"
+                                      "}")
+
+        config.del_button_mass.append(self.delButton)
+        self.delButton.clicked.connect(lambda: self.delBox(n))
+
         if affairs_json["priority"] == 1:
             self.label_n_2.setStyleSheet("font-size: 22px;\n"
                                          "background-color: rgb(80, 172, 83);\n"
@@ -165,11 +190,27 @@ class Ui_MainWindow(object):
         return self.Item_n
 
     def add_affairs(self, MainWindow, affairs_json):
-        affairs_mass.append(self.add_item(affairs_json))
+        config.num_add = config.num_add + 1
+        config.affairs_mass.append(self.add_item(affairs_json))
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ToDo"))
+
+    def delBox(self, n):
+        config.num_add = config.num_add - 1
+        for x in config.affairs_mass:
+            x.close()
+        functions.del_affairs_json(n)
+        config.affairs = functions.update_json()
+        self.repaint_Box()
+
+
+    def repaint_Box(self):
+        config.num_add = -1
+        for x in config.affairs["affairs"]:
+            self.add_affairs(self, x)
 
 class Add_Box (QtWidgets.QDialog):
     def __init__(self, parent= None):
