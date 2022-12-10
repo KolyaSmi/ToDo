@@ -10,7 +10,6 @@ from interfase.MainWindow import Ui_MainWindow, Add_Box
 class ToDo(QtWidgets.QMainWindow):
     def __init__(self):
         super(ToDo, self).__init__()
-        # self.num_aff = -1
         config.affairs = functions.initJson()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -39,8 +38,7 @@ class ToDo(QtWidgets.QMainWindow):
                 add.priority = 3
             config.affairs = functions.new_affairs_json(config.affairs, add.name.toPlainText(), add.text.toPlainText(),
                                                                 add.data.toPlainText(), add.priority)
-            config.num_aff = 1 + config.num_add
-            self.ui.add_affairs(self, config.affairs["affairs"][config.num_aff])
+            self.ui.add_affairs(self, config.affairs["affairs"][config.num_add + 1])
             add.close()
 
 if __name__ == "__main__":

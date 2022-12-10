@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.objFeeld = QtWidgets.QFrame(self.centralwidget)
         self.objFeeld.setEnabled(True)
-        self.objFeeld.setGeometry(QtCore.QRect(-1, 0, 801, 552))
+        self.objFeeld.setGeometry(QtCore.QRect(-1, -1, 801, 552))
         self.objFeeld.setStyleSheet("background-color: rgb(218, 218, 218);\n"
 "background-image: url(resources/bg_5.png);\n")
         self.objFeeld.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -37,18 +37,18 @@ class Ui_MainWindow(object):
         self.addButton.setGeometry(QtCore.QRect(700, 490, 50, 50))
         self.addButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.addButton.setStyleSheet("QPushButton {\n"
-"    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button.png);\n"
-"    border: none;\n"
-"    outline: none;\n"
-"    border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button_hover.png);\n"
-"    border: none;\n"
-"    outline: none;\n"
-"    border-radius: 10px;\n"
-"}")
+                                    "    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button.png);\n"
+                                    "    border: none;\n"
+                                    "    outline: none;\n"
+                                    "    border-radius: 10px;\n"
+                                    "}\n"
+                                    "\n"
+                                    "QPushButton:hover {\n"
+                                    "    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button_hover.png);\n"
+                                    "    border: none;\n"
+                                    "    outline: none;\n"
+                                    "    border-radius: 10px;\n"
+                                    "}")
         self.addButton.setText("")
         self.addButton.setObjectName("addButton")
         self.scrollArea = QtWidgets.QScrollArea(self.objFeeld)
@@ -71,6 +71,65 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(20)
         self.verticalLayout.setObjectName("verticalLayout")
 
+        self.sortPrior = QtWidgets.QPushButton(self.objFeeld)
+        self.sortPrior.setGeometry(QtCore.QRect(315, 490, 50, 50))
+        self.sortPrior.setStyleSheet("QPushButton {\n"
+                                       "    background-image: url(resources/button_sort_prior_off.png);\n"
+                                       "    border: none;\n"
+                                       "    outline: none;\n"
+                                       "    border-top-left-radius: 10px;"
+                                       "    border-bottom-left-radius: 10px;"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:checked {\n"
+                                       "    background-image: url(resources/button_sort_prior_on.png);\n"
+                                       "    border: none;\n"
+                                       "    outline: none;\n"
+                                       "    border-top-left-radius: 10px;"
+                                       "    border-bottom-left-radius: 10px;"
+                                       "}")
+        self.sortPrior.setCheckable(True)
+        self.sortPrior.setChecked(True)
+        self.sortPrior.clicked.connect(lambda: self.on_toggled_button(1))
+
+        self.sortData = QtWidgets.QPushButton(self.objFeeld)
+        self.sortData.setGeometry(QtCore.QRect(365, 490, 50, 50))
+        self.sortData.setStyleSheet("QPushButton {\n"
+                                     "    background-image: url(resources/button_sort_data_off.png);\n"
+                                     "    border: none;\n"
+                                     "    outline: none;\n"
+                                     "}\n"
+                                     "\n"
+                                     "QPushButton:checked {\n"
+                                     "    background-image: url(resources/button_sort_data_on.png);\n"
+                                     "    border: none;\n"
+                                     "    outline: none;\n"
+                                     "}")
+        self.sortData.setCheckable(True)
+        self.sortData.setChecked(False)
+        self.sortData.clicked.connect(lambda: self.on_toggled_button(2))
+
+        self.sortName = QtWidgets.QPushButton(self.objFeeld)
+        self.sortName.setGeometry(QtCore.QRect(415, 490, 50, 50))
+        self.sortName.setStyleSheet("QPushButton {\n"
+                                     "    background-image: url(resources/button_sort_a-z_off.png);\n"
+                                     "    border: none;\n"
+                                     "    outline: none;\n"
+                                     "    border-top-right-radius: 10px;"
+                                     "    border-bottom-right-radius: 10px;"
+                                     "}\n"
+                                     "\n"
+                                     "QPushButton:checked {\n"
+                                     "    background-image: url(resources/button_sort_a-z_on.png);\n"
+                                     "    border: none;\n"
+                                     "    outline: none;\n"
+                                     "    border-top-right-radius: 10px;"
+                                     "    border-bottom-right-radius: 10px;"
+                                     "}")
+        self.sortName.setCheckable(True)
+        self.sortName.setChecked(False)
+        self.sortName.clicked.connect(lambda: self.on_toggled_button(3))
+
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.scrollArea.raise_()
         self.addButton.raise_()
@@ -79,6 +138,26 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def on_toggled_button(self, n):
+        if n == 1:
+            functions.sort_json_prior()
+            self.repaint_Box()
+            self.sortPrior.setChecked(True)
+            self.sortData.setChecked(False)
+            self.sortName.setChecked(False)
+        if n == 2:
+            functions.sort_json_data()
+            self.repaint_Box()
+            self.sortPrior.setChecked(False)
+            self.sortData.setChecked(True)
+            self.sortName.setChecked(False)
+        if n == 3:
+            functions.sort_json_name()
+            self.repaint_Box()
+            self.sortPrior.setChecked(False)
+            self.sortData.setChecked(False)
+            self.sortName.setChecked(True)
 
     def add_item(self, affairs_json):
         n = config.num_add
@@ -109,6 +188,7 @@ class Ui_MainWindow(object):
         self.label_n_3.setStyleSheet("background-color: rgb(228, 247, 246);\n"
                                      "border-top-right-radius: 10px;\n"
                                      "font-size: 18px;\n"
+                                     "font-weight: bold;"
                                      "padding-left: 20px;\n"
                                      "color: rgb(63, 63, 63)")
         self.label_n_3.setObjectName("label_45")
@@ -179,7 +259,7 @@ class Ui_MainWindow(object):
                                          "border-top-left-radius: 10px;")
         if affairs_json["priority"] == 2:
             self.label_n_2.setStyleSheet("font-size: 22px;\n"
-                                         "background-color: rgb(212, 207, 83);\n"
+                                         "background-color: rgb(242, 177, 9);\n"
                                          "color: white;\n"
                                          "border-top-left-radius: 10px;")
         if affairs_json["priority"] == 3:
@@ -200,15 +280,15 @@ class Ui_MainWindow(object):
 
     def delBox(self, n):
         config.num_add = config.num_add - 1
-        for x in config.affairs_mass:
-            x.close()
         functions.del_affairs_json(n)
-        config.affairs = functions.update_json()
         self.repaint_Box()
 
 
     def repaint_Box(self):
         config.num_add = -1
+        config.affairs = functions.update_json()
+        for x in config.affairs_mass:
+            x.close()
         for x in config.affairs["affairs"]:
             self.add_affairs(self, x)
 
@@ -223,14 +303,22 @@ class Add_Box (QtWidgets.QDialog):
         self.verticalLayout = QtWidgets.QVBoxLayout(self)
         self.verticalLayout.setObjectName("verticalLayout")
 
+        self.bg = QtWidgets.QFrame(self)
+        self.bg.setGeometry(QtCore.QRect(0, 0, 762, 263))
+        self.bg.setStyleSheet("background-image: url(resources/bg_1_add.png);")
+
         self.frame = QtWidgets.QFrame(self)
         self.frame.setGeometry(QtCore.QRect(0, 0, 762, 263))
-        self.frame.setStyleSheet("background-color: rgb(249, 249, 249);")
+        self.frame.setEnabled(True)
+        self.frame.setStyleSheet("background-color: rgba(249, 249, 249, 0);")
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
 
         self.name = QtWidgets.QTextEdit(self.frame)
-        self.name.setGeometry(QtCore.QRect(71, 20, 490, 31))
+        self.name.setGeometry(QtCore.QRect(133, 20, 429, 31))
         self.name.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.name.setStyleSheet("background-color: rgb(217, 217, 217);"
+        self.name.setStyleSheet("background-color: rgba(225, 225, 225, 150);"
+                                "outline: none;"
                                 "border: none;"
                                 "border-radius: 10px;"
                                 "font-size: 19px;"
@@ -239,7 +327,7 @@ class Add_Box (QtWidgets.QDialog):
 
         self.data = QtWidgets.QTextEdit(self.frame)
         self.data.setGeometry(QtCore.QRect(581, 20, 161, 31))
-        self.data.setStyleSheet("background-color: rgb(217, 217, 217);"
+        self.data.setStyleSheet("background-color: rgba(225, 225, 225, 150);"
                                 "border: none;"
                                 "border-radius: 10px;"
                                 "font-size: 19px;"
@@ -249,46 +337,60 @@ class Add_Box (QtWidgets.QDialog):
         self.text = QtWidgets.QTextEdit(self.frame)
         self.text.setGeometry(QtCore.QRect(20, 71, 722, 120))
         self.text.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.text.setStyleSheet("background-color: rgb(217, 217, 217);"
+        self.text.setStyleSheet("background-color: rgba(225, 225, 225, 150);"
                                 "border: none;"
                                 "border-radius: 10px;"
                                 "font-size: 19px;"
                                 "padding-left: 10px;")
         self.text.setPlaceholderText("Text")
 
-        self.priority_1 = QtWidgets.QRadioButton(self.frame)
-        self.priority_1.setGeometry(QtCore.QRect(20, 211, 31, 31))
+        self.priority_1 = QtWidgets.QPushButton(self.frame)
+        self.priority_1.setGeometry(QtCore.QRect(20, 20, 31, 31))
+        self.priority_1.setCheckable(True)
         self.priority_1.setChecked(True)
-        self.priority_1.setStyleSheet("QRadioButton {"
+        self.priority_1.setStyleSheet("QPushButton {"
                                       "background-color: rgb(169, 220, 170);"
-                                      "border-radius: 10px;"
+                                      "border-top-left-radius: 10px;"
+                                      "border-bottom-left-radius: 10px;"
                                       "outline: none;"
                                       "}"
-                                      "QRadioButton:checked {"
+                                      "QPushButton:checked {"
                                       "background-color: rgb(80, 172, 83);"
-                                      "border-radius: 10px;"
+                                      "border-top-left-radius: 10px;"
+                                      "border-bottom-left-radius: 10px;"
                                       "outline: none;"
                                       "}")
-        self.priority_2 = QtWidgets.QRadioButton(self.frame)
-        self.priority_2.setGeometry(QtCore.QRect(71, 211, 31, 31))
-        self.priority_2.setStyleSheet("QRadioButton {"
-                                      "background-color: rgb(232, 228, 148);"
-                                      "border-radius: 10px"
+        self.priority_1.clicked.connect(lambda: self.toggle_button(1))
+
+        self.priority_2 = QtWidgets.QPushButton(self.frame)
+        self.priority_2.setGeometry(QtCore.QRect(51, 20, 31, 31))
+        self.priority_2.setCheckable(True)
+        self.priority_2.setChecked(False)
+        self.priority_2.setStyleSheet("QPushButton {"
+                                      "background-color: rgb(234, 218, 194);"
+                                      "border: none"
                                       "}"
-                                      "QRadioButton:checked {"
-                                      "background-color: rgb(236, 228, 44);"
-                                      "border-radius: 10px"
+                                      "QPushButton:checked {"
+                                      "background-color: rgb(242, 177, 9);"
+                                      "border: none"
                                       "}")
-        self.priority_3 = QtWidgets.QRadioButton(self.frame)
-        self.priority_3.setGeometry(QtCore.QRect(122, 211, 31, 31))
-        self.priority_3.setStyleSheet("QRadioButton {"
+        self.priority_2.clicked.connect(lambda: self.toggle_button(2))
+
+        self.priority_3 = QtWidgets.QPushButton(self.frame)
+        self.priority_3.setGeometry(QtCore.QRect(82, 20, 31, 31))
+        self.priority_3.setCheckable(True)
+        self.priority_3.setChecked(False)
+        self.priority_3.setStyleSheet("QPushButton {"
                                       "background-color: rgb(226, 166, 166);"
-                                      "border-radius: 10px"
+                                      "border-top-right-radius: 10px;"
+                                      "border-bottom-right-radius: 10px;"
                                       "}"
-                                      "QRadioButton:checked {"
+                                      "QPushButton:checked {"
                                       "background-color: rgb(202, 71, 71);"
-                                      "border-radius: 10px"
+                                      "border-top-right-radius: 10px;"
+                                      "border-bottom-right-radius: 10px;"
                                       "}")
+        self.priority_3.clicked.connect(lambda: self.toggle_button(3))
 
         self.button_add = QtWidgets.QPushButton(self.frame)
         self.button_add.setGeometry(QtCore.QRect(710, 210, 32, 32))
@@ -315,7 +417,7 @@ class Add_Box (QtWidgets.QDialog):
                                     "padding-left: 10px;")
             check = False
         else:
-            self.name.setStyleSheet("background-color: rgb(217, 217, 217);;"
+            self.name.setStyleSheet("background-color: rgba(225, 225, 225, 150);"
                                     "border: none;"
                                     "border-radius: 10px;"
                                     "font-size: 19px;"
@@ -332,10 +434,24 @@ class Add_Box (QtWidgets.QDialog):
                                         "padding-left: 10px;")
                 check = False
             else:
-                self.data.setStyleSheet("background-color: rgb(217, 217, 217);"
+                self.data.setStyleSheet("background-color: rgba(225, 225, 225, 150);"
                                         "border: none;"
                                         "border-radius: 10px;"
                                         "font-size: 19px;"
                                         "padding-left: 10px;")
                 check = True
         return check
+
+    def toggle_button(self, n):
+        if n == 1:
+            self.priority_1.setChecked(True)
+            self.priority_2.setChecked(False)
+            self.priority_3.setChecked(False)
+        if n == 2:
+            self.priority_1.setChecked(False)
+            self.priority_2.setChecked(True)
+            self.priority_3.setChecked(False)
+        if n == 3:
+            self.priority_1.setChecked(False)
+            self.priority_2.setChecked(False)
+            self.priority_3.setChecked(True)

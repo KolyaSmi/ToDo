@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 
@@ -40,6 +41,30 @@ def del_affairs_json(n):
     affairs = json.loads(str(affairs))
     with open("resources/affairs.json","w", encoding='utf-8') as fp:
         json.dump(affairs, fp, indent=2)
+
+def sort_json_prior():
+    with open("resources/affairs.json","r", encoding='utf-8') as fp:
+        affairs = json.load(fp)
+        affairs["affairs"].sort(key = lambda x: (x['priority']))
+    with open("resources/affairs.json", "w", encoding='utf-8') as fp:
+        json.dump(affairs, fp, ensure_ascii=False, indent=2)
+        return affairs
+
+def sort_json_data():
+    with open("resources/affairs.json","r", encoding='utf-8') as fp:
+        affairs = json.load(fp)
+        affairs["affairs"].sort(key=lambda x: datetime.strptime(x['data'], '%d.%m.%Y'))
+    with open("resources/affairs.json", "w", encoding='utf-8') as fp:
+        json.dump(affairs, fp, ensure_ascii=False, indent=2)
+        return affairs
+
+def sort_json_name():
+    with open("resources/affairs.json","r", encoding='utf-8') as fp:
+        affairs = json.load(fp)
+        affairs["affairs"].sort(key=lambda x: x['name'])
+    with open("resources/affairs.json", "w", encoding='utf-8') as fp:
+        json.dump(affairs, fp, ensure_ascii=False, indent=2)
+        return affairs
 
 def update_json():
     with open("resources/affairs.json","r") as fp:
