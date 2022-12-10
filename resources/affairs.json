@@ -4,31 +4,66 @@
       "name": "Создать иконку для приложения",
       "text": "",
       "data": "",
-      "priority": 3
+      "priority": 3,
+      "meta": [
+        {
+          "add_data": "10.12.2022",
+          "add_time": "12:00",
+          "del_data": ""
+        }
+      ]
     },
     {
       "name": "настроить сортировку",
       "text": "",
       "data": "",
-      "priority": 2
+      "priority": 2,
+      "meta": [
+        {
+          "add_data": "10.12.2022",
+          "add_time": "12:00",
+          "del_data": ""
+        }
+      ]
     },
     {
       "name": "размер",
       "text": "окно в котором создается новый таск не по размеру с основным окном\n",
       "data": "",
-      "priority": 2
+      "priority": 2,
+      "meta": [
+        {
+          "add_data": "10.12.2022",
+          "add_time": "12:00",
+          "del_data": ""
+        }
+      ]
     },
     {
       "name": "доделать интерфейс",
       "text": "",
       "data": "",
-      "priority": 1
+      "priority": 1,
+      "meta": [
+        {
+          "add_data": "10.12.2022",
+          "add_time": "12:00",
+          "del_data": ""
+        }
+      ]
     },
     {
       "name": "история дел",
       "text": "",
       "data": "",
-      "priority": 1
+      "priority": 1,
+      "meta": [
+        {
+          "add_data": "10.12.2022",
+          "add_time": "12:00",
+          "del_data": ""
+        }
+      ]
     }
   ]
 }

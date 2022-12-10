@@ -1,10 +1,9 @@
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtGui import QIcon
 
-# import functions.functions
 from functions import functions, config
-from interfase.MainWindow import Ui_MainWindow, Add_Box
+from interfase.MainWindow import Ui_MainWindow
+from interfase.Add_window import Add_Box
 
 
 class ToDo(QtWidgets.QMainWindow):
@@ -37,7 +36,7 @@ class ToDo(QtWidgets.QMainWindow):
             if add.priority_3.isChecked():
                 add.priority = 3
             config.affairs = functions.new_affairs_json(config.affairs, add.name.toPlainText(), add.text.toPlainText(),
-                                                                add.data.toPlainText(), add.priority)
+                                                        add.data.toPlainText(), add.priority)
             self.ui.add_affairs(self, config.affairs["affairs"][config.num_add + 1])
             add.close()
 

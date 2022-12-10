@@ -24,13 +24,26 @@ def initJson():
         return affairs
 
 def new_affairs_json(affairs, name, text, data, priority):
-    item = json.dumps({"name": name, "text": text, "data": data, "priority": priority})
+    item = json.dumps(
+        {
+            "name": name,
+            "text": text,
+            "data": data,
+            "priority": priority,
+            "meta": [
+                {
+                    "add_data": datetime.datetime.now().strftime("%d.%m.%Y"),
+                    "add_time": datetime.datetime.now().strftime("%H:%M"),
+                    "del_data": ""
+                 }
+            ]
+        })
     item = json.loads(str(item))
     affairs["affairs"].append(item)
     affairs = json.dumps(affairs)
     affairs = json.loads(str(affairs))
     with open("resources/affairs.json","w", encoding='utf-8') as fp:
-        json.dump(affairs, fp, indent=2)
+        json.dump(affairs, fp, ensure_ascii=False, indent=2)
     return affairs
 
 def del_affairs_json(n):
@@ -41,7 +54,7 @@ def del_affairs_json(n):
     affairs = json.dumps(affairs)
     affairs = json.loads(str(affairs))
     with open("resources/affairs.json","w", encoding='utf-8') as fp:
-        json.dump(affairs, fp, indent=2)
+        json.dump(affairs, fp, ensure_ascii=False, indent=2)
 
 def sort_json_prior():
     with open("resources/affairs.json","r", encoding='utf-8') as fp:
