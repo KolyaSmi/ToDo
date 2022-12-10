@@ -3,7 +3,7 @@ import json
 import os
 
 def initJson():
-    with open("resources/affairs.json","r") as fp:
+    with open("resources/affairs.json","r", encoding='utf-8') as fp:
         if os.stat("resources/affairs.json").st_size != 0:
             sort_json_prior()
             affairs_json = fp.read()
@@ -34,7 +34,7 @@ def new_affairs_json(affairs, name, text, data, priority):
     return affairs
 
 def del_affairs_json(n):
-    with open("resources/affairs.json", "r") as fp:
+    with open("resources/affairs.json", "r", encoding='utf-8') as fp:
         affairs_json = fp.read()
         affairs = json.loads(affairs_json)
     affairs["affairs"].pop(n)
@@ -68,7 +68,7 @@ def sort_json_name():
         return affairs
 
 def update_json():
-    with open("resources/affairs.json","r") as fp:
+    with open("resources/affairs.json","r", encoding='utf-8') as fp:
         affairs_json = fp.read()
         affairs = json.loads(affairs_json)
     return affairs

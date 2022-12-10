@@ -37,14 +37,14 @@ class Ui_MainWindow(object):
         self.addButton.setGeometry(QtCore.QRect(700, 490, 50, 50))
         self.addButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.addButton.setStyleSheet("QPushButton {\n"
-                                    "    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button.png);\n"
+                                    "    background-image: url(resources/add_button.png);\n"
                                     "    border: none;\n"
                                     "    outline: none;\n"
                                     "    border-radius: 10px;\n"
                                     "}\n"
                                     "\n"
                                     "QPushButton:hover {\n"
-                                    "    background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/add_button_hover.png);\n"
+                                    "    background-image: url(resources/add_button_hover.png);\n"
                                     "    border: none;\n"
                                     "    outline: none;\n"
                                     "    border-radius: 10px;\n"
@@ -238,14 +238,14 @@ class Ui_MainWindow(object):
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(169, 220, 170);"
-                                      "background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/del_button.png);"
+                                      "background-image: url(resources/del_button.png);"
                                       "border-radius: 2px;"
                                       "}"
                                       "QPushButton:hover {"
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(80, 172, 83);"
-                                      "background-image: url(/Users/nikolaismirnov/Documents/GitHub/ToDo/resources/del_button_hover.png);"
+                                      "background-image: url(resources/del_button_hover.png);"
                                       "border-radius: 2px"
                                       "}")
 
