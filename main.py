@@ -13,13 +13,17 @@ class ToDo(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        if config.affairs != None:
-            for x in config.affairs["affairs"]:
-                self.ui.add_affairs(self, x)
+        self.ui.repaint_Box()
 
-        self.ui.addButton.clicked.connect(lambda: self.new_affairs())
+        self.init_buttons()
 
-    def new_affairs(self):
+    def init_buttons(self):
+        self.ui.addButton.clicked.connect(lambda: self.new_affairs_window())
+        self.ui.sortPrior.clicked.connect(lambda: functions.sort_button_on(self.ui, 1))
+        self.ui.sortData.clicked.connect(lambda: functions.sort_button_on(self.ui, 2))
+        self.ui.sortName.clicked.connect(lambda: functions.sort_button_on(self.ui, 3))
+
+    def new_affairs_window(self):
         add = Add_Box(self)
 
         add.button_add.clicked.connect(lambda: {self.button_add_cliched(add)})

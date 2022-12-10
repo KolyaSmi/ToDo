@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
 
-        self.affairs_mass_new = []
+        # MainWindow.setWindowIcon(QtGui.QIcon("resources/del_button.png"))
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(780, 550)
@@ -90,7 +90,6 @@ class Ui_MainWindow(object):
                                        "}")
         self.sortPrior.setCheckable(True)
         self.sortPrior.setChecked(True)
-        self.sortPrior.clicked.connect(lambda: self.on_toggled_button(1))
 
         self.sortData = QtWidgets.QPushButton(self.objFeeld)
         self.sortData.setGeometry(QtCore.QRect(365, 490, 50, 50))
@@ -107,7 +106,6 @@ class Ui_MainWindow(object):
                                      "}")
         self.sortData.setCheckable(True)
         self.sortData.setChecked(False)
-        self.sortData.clicked.connect(lambda: self.on_toggled_button(2))
 
         self.sortName = QtWidgets.QPushButton(self.objFeeld)
         self.sortName.setGeometry(QtCore.QRect(415, 490, 50, 50))
@@ -128,7 +126,6 @@ class Ui_MainWindow(object):
                                      "}")
         self.sortName.setCheckable(True)
         self.sortName.setChecked(False)
-        self.sortName.clicked.connect(lambda: self.on_toggled_button(3))
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.scrollArea.raise_()
@@ -139,25 +136,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def on_toggled_button(self, n):
-        if n == 1:
-            functions.sort_json_prior()
-            self.repaint_Box()
-            self.sortPrior.setChecked(True)
-            self.sortData.setChecked(False)
-            self.sortName.setChecked(False)
-        if n == 2:
-            # functions.sort_json_data()
-            self.repaint_Box()
-            self.sortPrior.setChecked(False)
-            self.sortData.setChecked(True)
-            self.sortName.setChecked(False)
-        if n == 3:
-            functions.sort_json_name()
-            self.repaint_Box()
-            self.sortPrior.setChecked(False)
-            self.sortData.setChecked(False)
-            self.sortName.setChecked(True)
 
     def add_item(self, affairs_json):
         n = config.num_add
@@ -249,8 +227,7 @@ class Ui_MainWindow(object):
                                       "border-radius: 2px"
                                       "}")
 
-        config.del_button_mass.append(self.delButton)
-        self.delButton.clicked.connect(lambda: self.delBox(n))
+        self.delButton.clicked.connect(lambda: self.del_box(n))
 
         if affairs_json["priority"] == 1:
             self.label_n_2.setStyleSheet("font-size: 22px;\n"
@@ -278,7 +255,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ToDo"))
 
-    def delBox(self, n):
+    def del_box(self, n):
         config.num_add = config.num_add - 1
         functions.del_affairs_json(n)
         self.repaint_Box()

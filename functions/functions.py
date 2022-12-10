@@ -85,3 +85,23 @@ def update_json():
         affairs_json = fp.read()
         affairs = json.loads(affairs_json)
     return affairs
+
+def sort_button_on(ui, n):
+    if n == 1:
+        sort_json_prior()
+        ui.repaint_Box()
+        ui.sortPrior.setChecked(True)
+        ui.sortData.setChecked(False)
+        ui.sortName.setChecked(False)
+    if n == 2:
+        # sort_json_data()
+        ui.repaint_Box()
+        ui.sortPrior.setChecked(False)
+        ui.sortData.setChecked(True)
+        ui.sortName.setChecked(False)
+    if n == 3:
+        sort_json_name()
+        ui.repaint_Box()
+        ui.sortPrior.setChecked(False)
+        ui.sortData.setChecked(False)
+        ui.sortName.setChecked(True)
