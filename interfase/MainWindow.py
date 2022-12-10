@@ -147,7 +147,7 @@ class Ui_MainWindow(object):
             self.sortData.setChecked(False)
             self.sortName.setChecked(False)
         if n == 2:
-            functions.sort_json_data()
+            # functions.sort_json_data()
             self.repaint_Box()
             self.sortPrior.setChecked(False)
             self.sortData.setChecked(True)

@@ -5,6 +5,7 @@ import os
 def initJson():
     with open("resources/affairs.json","r") as fp:
         if os.stat("resources/affairs.json").st_size != 0:
+            sort_json_prior()
             affairs_json = fp.read()
             affairs = json.loads(affairs_json)
         else:
@@ -45,7 +46,7 @@ def del_affairs_json(n):
 def sort_json_prior():
     with open("resources/affairs.json","r", encoding='utf-8') as fp:
         affairs = json.load(fp)
-        affairs["affairs"].sort(key = lambda x: (x['priority']))
+        affairs["affairs"].sort(key = lambda x: (-x['priority']))
     with open("resources/affairs.json", "w", encoding='utf-8') as fp:
         json.dump(affairs, fp, ensure_ascii=False, indent=2)
         return affairs
