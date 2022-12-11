@@ -118,6 +118,7 @@ class Add_Box (QtWidgets.QDialog):
                                       "background-color: rgb(80, 172, 83);"
                                       "border-radius: 10px"
                                       "}")
+
     def checkRegulations(self):
         check = True
         pattern = re.compile('(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$')

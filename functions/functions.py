@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 
+
 def initJson():
     with open("resources/affairs.json","r", encoding='utf-8') as fp:
         if os.stat("resources/affairs.json").st_size != 0:
@@ -50,6 +51,7 @@ def del_affairs_json(n):
     with open("resources/affairs.json", "r", encoding='utf-8') as fp:
         affairs_json = fp.read()
         affairs = json.loads(affairs_json)
+    load_affairs_in_story(affairs["affairs"][n])
     affairs["affairs"].pop(n)
     affairs = json.dumps(affairs)
     affairs = json.loads(str(affairs))
@@ -86,22 +88,29 @@ def update_json():
         affairs = json.loads(affairs_json)
     return affairs
 
-def sort_button_on(ui, n):
-    if n == 1:
-        sort_json_prior()
-        ui.repaint_Box()
-        ui.sortPrior.setChecked(True)
-        ui.sortData.setChecked(False)
-        ui.sortName.setChecked(False)
-    if n == 2:
-        # sort_json_data()
-        ui.repaint_Box()
-        ui.sortPrior.setChecked(False)
-        ui.sortData.setChecked(True)
-        ui.sortName.setChecked(False)
-    if n == 3:
-        sort_json_name()
-        ui.repaint_Box()
-        ui.sortPrior.setChecked(False)
-        ui.sortData.setChecked(False)
-        ui.sortName.setChecked(True)
+def load_affairs_in_story(affair):
+    with open("resources/affairs_story.json", "r", encoding='utf-8') as fp:
+        affair_story = json.load(fp)
+    affair_story["affairs"].append(affair)
+    with open("resources/affairs_story.json", "w", encoding='utf-8') as fp:
+        json.dump(affair_story, fp, ensure_ascii=False, indent=2)
+
+
+def init_story_json():
+    with open("resources/affairs_story.json", "r", encoding='utf-8') as fp:
+        affair_story = json.load(fp)
+    return affair_story
+
+
+def update_story_json():
+    with open("resources/affairs_story.json", "r", encoding='utf-8') as fp:
+        affairs_json = fp.read()
+        affairs = json.loads(affairs_json)
+    return affairs
+
+def del_story_json():
+    with open("resources/affairs_story.json", "w", encoding='utf-8') as fp:
+        affair = {
+            "affairs": []
+        }
+        json.dump(affair, fp, ensure_ascii=False, indent=2)

@@ -1,5 +1,6 @@
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QDialogButtonBox
 
 from functions import functions, config
 from interfase.MainWindow import Ui_MainWindow
@@ -10,18 +11,22 @@ class ToDo(QtWidgets.QMainWindow):
     def __init__(self):
         super(ToDo, self).__init__()
         config.affairs = functions.initJson()
+        config.affairs_story = functions.init_story_json()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.ui.repaint_Box()
+        self.ui.add_story()
 
         self.init_buttons()
 
     def init_buttons(self):
         self.ui.addButton.clicked.connect(lambda: self.new_affairs_window())
-        self.ui.sortPrior.clicked.connect(lambda: functions.sort_button_on(self.ui, 1))
-        self.ui.sortData.clicked.connect(lambda: functions.sort_button_on(self.ui, 2))
-        self.ui.sortName.clicked.connect(lambda: functions.sort_button_on(self.ui, 3))
+        self.ui.sortPrior.clicked.connect(lambda: self.sort_button_on(1))
+        self.ui.sortData.clicked.connect(lambda: self.sort_button_on(2))
+        self.ui.sortName.clicked.connect(lambda: self.sort_button_on(3))
+        self.ui.buttonStory.clicked.connect(lambda: self.button_story_on())
+        self.ui.del_button_story.clicked.connect(lambda: self.dialog_window())
 
     def new_affairs_window(self):
         add = Add_Box(self)
@@ -31,7 +36,6 @@ class ToDo(QtWidgets.QMainWindow):
         add.exec()
 
     def button_add_cliched(self, add):
-        config.affairs = functions.update_json()
         if add.checkRegulations():
             if add.priority_1.isChecked():
                 add.priority = 1
@@ -41,8 +45,74 @@ class ToDo(QtWidgets.QMainWindow):
                 add.priority = 3
             config.affairs = functions.new_affairs_json(config.affairs, add.name.toPlainText(), add.text.toPlainText(),
                                                         add.data.toPlainText(), add.priority)
-            self.ui.add_affairs(self, config.affairs["affairs"][config.num_add + 1])
+            if config.sort_id == 1:
+                config.affairs = functions.sort_json_prior()
+            if config.sort_id == 2:
+                config.affairs = functions.sort_json_data()
+            if config.sort_id == 3:
+                config.affairs = functions.sort_json_name()
+            self.ui.repaint_Box()
             add.close()
+
+    def sort_button_on(self, n):
+        if n == 1:
+            functions.sort_json_prior()
+            self.ui.repaint_Box()
+            self.ui.sortPrior.setChecked(True)
+            self.ui.sortData.setChecked(False)
+            self.ui.sortName.setChecked(False)
+        if n == 2:
+            # sort_json_data()
+            self.ui.repaint_Box()
+            self.ui.sortPrior.setChecked(False)
+            self.ui.sortData.setChecked(True)
+            self.ui.sortName.setChecked(False)
+        if n == 3:
+            functions.sort_json_name()
+            self.ui.repaint_Box()
+            self.ui.sortPrior.setChecked(False)
+            self.ui.sortData.setChecked(False)
+            self.ui.sortName.setChecked(True)
+        config.sort_id = n
+
+    def button_story_on(self):
+        if config.status_button_story:
+            self.ui.addButton.setVisible(True)
+            self.ui.del_button_story.setVisible(False)
+            self.ui.show_affairs()
+            # self.ui.del_story()
+            self.ui.hide_story()
+            config.status_button_story = False
+        else:
+            self.ui.addButton.setVisible(False)
+            self.ui.del_button_story.setVisible(True)
+            self.ui.hide_affairs()
+            self.ui.show_story()
+            config.status_button_story = True
+
+    def dialog_window(self):
+        massage = QtWidgets.QDialog()
+
+        massage.setWindowTitle("Удаление")
+        massage.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Yes | QDialogButtonBox.StandardButton.No)
+        massage.buttonBox.accepted.connect(lambda: self.del_accept(massage))
+        massage.buttonBox.rejected.connect(lambda: self.close_dialog(massage))
+
+        massage.layout = QtWidgets.QVBoxLayout()
+        message = QtWidgets.QLabel("Вы действительно хотите очистить историю?")
+        massage.layout.addWidget(message)
+        massage.layout.addWidget(massage.buttonBox)
+        massage.setLayout(massage.layout)
+
+        massage.exec()
+
+    def close_dialog(self, massage):
+        massage.close()
+
+    def del_accept(self, massage):
+        self.ui.del_story()
+        functions.del_story_json()
+        massage.close()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
