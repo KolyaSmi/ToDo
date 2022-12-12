@@ -2,6 +2,8 @@ import datetime
 import json
 import os
 
+from interfase.Edit_window import Edit_Box
+
 
 def initJson():
     with open("resources/affairs.json","r", encoding='utf-8') as fp:
@@ -114,3 +116,10 @@ def del_story_json():
             "affairs": []
         }
         json.dump(affair, fp, ensure_ascii=False, indent=2)
+
+def settings_button_clicked(self):
+    edit = Edit_Box(self)
+
+    edit.button_apply.clicked.connect(lambda: self.button_add_cliched(edit))
+
+    edit.exec()

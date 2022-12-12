@@ -1,14 +1,14 @@
 {
   "affairs": [
     {
-      "name": "Создать иконку для приложения",
+      "name": "2",
       "text": "",
       "data": "",
       "priority": 3,
       "meta": [
         {
-          "add_data": "10.12.2022",
-          "add_time": "12:00",
+          "add_data": "12.12.2022",
+          "add_time": "12:17",
           "del_data": ""
         }
       ]
@@ -35,6 +35,19 @@
         {
           "add_data": "10.12.2022",
           "add_time": "12:00",
+          "del_data": ""
+        }
+      ]
+    },
+    {
+      "name": "1",
+      "text": "",
+      "data": "",
+      "priority": 1,
+      "meta": [
+        {
+          "add_data": "12.12.2022",
+          "add_time": "12:15",
           "del_data": ""
         }
       ]

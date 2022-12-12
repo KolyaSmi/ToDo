@@ -9,6 +9,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QDialogButtonBox
 
 from functions import functions, config
+from interfase.Edit_window import Edit_Box
 
 
 class Ui_MainWindow(object):
@@ -264,6 +265,23 @@ class Ui_MainWindow(object):
 
         self.delButton.clicked.connect(lambda: self.del_box(n))
 
+        self.settings_button = QtWidgets.QPushButton(self.Item_n)
+        self.settings_button.setGeometry(QtCore.QRect(685, 18, 15, 15))
+        self.settings_button.setStyleSheet("QPushButton {"
+                                     "border: none;"
+                                     "outline: none;"
+                                     "background-image: url(resources/settings_button.png);"
+                                     "border-radius: 2px;"
+                                     "}"
+                                     "QPushButton:hover {"
+                                     "border: none;"
+                                     "outline: none;"
+                                     "background-image: url(resources/settings_button.png);"
+                                     "border-radius: 2px"
+                                     "}")
+        # self.settings_button.clicked(functions.settings_button_clicked())
+        self.settings_button.clicked.connect(lambda: self.settings_button_clicked(n))
+
         if affairs_json["priority"] == 1:
             self.label_n_2.setStyleSheet("font-size: 22px;\n"
                                          "background-color: rgb(80, 172, 83);\n"
@@ -421,3 +439,33 @@ class Ui_MainWindow(object):
     def hide_story(self):
         for affair in config.story_mass:
             affair.setVisible(False)
+
+    def settings_button_clicked(self, n):
+        edit = Edit_Box(n)
+
+        edit.button_apply.clicked.connect(lambda: self.apply_clicked(edit, n))
+
+        edit.exec()
+
+    def apply_clicked(self, edit, n):
+        if edit.checkRegulations():
+            if edit.priority_1.isChecked():
+                edit.priority = 1
+            if edit.priority_2.isChecked():
+                edit.priority = 2
+            if edit.priority_3.isChecked():
+                edit.priority = 3
+
+            config.affairs = functions.new_affairs_json(config.affairs, edit.name.toPlainText(), edit.text.toPlainText(),
+                                                        edit.data.toPlainText(), edit.priority)
+            functions.del_affairs_json(n)
+
+            if config.sort_id == 1:
+                config.affairs = functions.sort_json_prior()
+            if config.sort_id == 2:
+                config.affairs = functions.sort_json_data()
+            if config.sort_id == 3:
+                config.affairs = functions.sort_json_name()
+            self.repaint_Box()
+            edit.close()
+

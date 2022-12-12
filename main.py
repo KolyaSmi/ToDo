@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QDialogButtonBox
 from functions import functions, config
 from interfase.MainWindow import Ui_MainWindow
 from interfase.Add_window import Add_Box
+from interfase.Edit_window import Edit_Box
 
 
 class ToDo(QtWidgets.QMainWindow):
@@ -27,6 +28,8 @@ class ToDo(QtWidgets.QMainWindow):
         self.ui.sortName.clicked.connect(lambda: self.sort_button_on(3))
         self.ui.buttonStory.clicked.connect(lambda: self.button_story_on())
         self.ui.del_button_story.clicked.connect(lambda: self.dialog_window())
+        # for button in config.settings_button_mass:
+        #     button.clicked.connect(lambda: self.)
 
     def new_affairs_window(self):
         add = Add_Box(self)
@@ -79,6 +82,9 @@ class ToDo(QtWidgets.QMainWindow):
         if config.status_button_story:
             self.ui.addButton.setVisible(True)
             self.ui.del_button_story.setVisible(False)
+            self.ui.sortName.setVisible(True)
+            self.ui.sortData.setVisible(True)
+            self.ui.sortPrior.setVisible(True)
             self.ui.show_affairs()
             # self.ui.del_story()
             self.ui.hide_story()
@@ -86,6 +92,9 @@ class ToDo(QtWidgets.QMainWindow):
         else:
             self.ui.addButton.setVisible(False)
             self.ui.del_button_story.setVisible(True)
+            self.ui.sortName.setVisible(False)
+            self.ui.sortData.setVisible(False)
+            self.ui.sortPrior.setVisible(False)
             self.ui.hide_affairs()
             self.ui.show_story()
             config.status_button_story = True
@@ -113,6 +122,16 @@ class ToDo(QtWidgets.QMainWindow):
         self.ui.del_story()
         functions.del_story_json()
         massage.close()
+
+    def edit_affair(self, edit):
+        if edit.checkRegulations():
+            if edit.priority_1.isChecked():
+                edit.priority = 1
+            if edit.priority_2.isChecked():
+                edit.priority = 2
+            if edit.priority_3.isChecked():
+                edit.priority = 3
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
