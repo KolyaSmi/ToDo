@@ -1,4 +1,5 @@
 import sys
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QDialogButtonBox
 
@@ -65,7 +66,7 @@ class ToDo(QtWidgets.QMainWindow):
             self.ui.sortData.setChecked(False)
             self.ui.sortName.setChecked(False)
         if n == 2:
-            # sort_json_data()
+            functions.sort_json_data()
             self.ui.repaint_Box()
             self.ui.sortPrior.setChecked(False)
             self.ui.sortData.setChecked(True)

@@ -1,8 +1,9 @@
-import datetime
+from datetime import datetime
 import json
 import os
 
 from interfase.Edit_window import Edit_Box
+
 
 
 def initJson():
@@ -69,11 +70,21 @@ def sort_json_prior():
         return affairs
 
 def sort_json_data():
-    with open("resources/affairs.json","r", encoding='utf-8') as fp:
+    with open("resources/affairs.json", "r", encoding='utf-8') as fp:
         affairs = json.load(fp)
-        affairs["affairs"].sort(key=lambda x: datetime.strptime(x['data'], '%d.%m.%Y'))
+        affairs_nodata = []
+        affairs_data = []
+        x = len(affairs['affairs'])
+        for i in range(x):
+            if affairs['affairs'][i]['data'] == "":
+                affairs_nodata.append(affairs['affairs'][i])
+            else:
+                affairs_data.append(affairs['affairs'][i])
+        affairs_data.sort(key=lambda k: datetime.strptime(k['data'], '%d.%m.%Y'))
+        # affairs_nodata.sort(key=lambda k: datetime.strptime(k['meta']['add_data'], '%d.%m.%Y'))
+        affairs['affairs'] = affairs_data + affairs_nodata
     with open("resources/affairs.json", "w", encoding='utf-8') as fp:
-        json.dump(affairs, fp, ensure_ascii=False, indent=2)
+        json.dump(affairs, fp, ensure_ascii=False, indent=4)
         return affairs
 
 def sort_json_name():

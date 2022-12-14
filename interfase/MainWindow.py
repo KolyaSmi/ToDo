@@ -232,7 +232,7 @@ class Ui_MainWindow(object):
 
         if affairs_json["data"] != "":
             self.label_n_4 = QtWidgets.QLabel(self.Item_n)
-            self.label_n_4.setGeometry(QtCore.QRect(601, 10, 130, 31))
+            self.label_n_4.setGeometry(QtCore.QRect(586, 10, 144, 31))
             self.label_n_4.setStyleSheet("background-color: rgb(215, 236, 235);\n"
                                          "border-top-right-radius: 10px;\n"
                                          "border-top-left-radius: 5px;\n"
@@ -276,7 +276,7 @@ class Ui_MainWindow(object):
                                      "QPushButton:hover {"
                                      "border: none;"
                                      "outline: none;"
-                                     "background-image: url(resources/settings_button.png);"
+                                     "background-image: url(resources/settings_button_hover.png);"
                                      "border-radius: 2px"
                                      "}")
         # self.settings_button.clicked(functions.settings_button_clicked())
