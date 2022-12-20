@@ -25,19 +25,6 @@
           "del_data": ""
         }
       ]
-    },
-    {
-      "name": "1",
-      "text": "",
-      "data": "01.02.2002",
-      "priority": 1,
-      "meta": [
-        {
-          "add_data": "14.12.2022",
-          "add_time": "11:51",
-          "del_data": ""
-        }
-      ]
     }
   ]
 }

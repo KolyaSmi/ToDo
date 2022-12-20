@@ -3,6 +3,8 @@ import re
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 from functions import functions, config
+from interfase import MainWindow
+
 
 class Edit_Box (QtWidgets.QDialog):
     def __init__(self, n):
@@ -128,6 +130,23 @@ class Edit_Box (QtWidgets.QDialog):
                                       "outline: none;"
                                       "background-color: rgb(80, 172, 83);"
                                       "border-radius: 10px"
+                                      "}")
+
+        self.delButton = QtWidgets.QPushButton(self.frame)
+        self.delButton.setGeometry(QtCore.QRect(690, 210, 15, 15))
+        self.delButton.setStyleSheet("QPushButton {"
+                                      "border: none;"
+                                      "outline: none;"
+                                      "background-color: rgb(169, 220, 170);"
+                                      "background-image: url(resources/del_button.png);"
+                                      "border-radius: 2px;"
+                                      "}"
+                                      "QPushButton:hover {"
+                                      "border: none;"
+                                      "outline: none;"
+                                      "background-color: rgb(80, 172, 83);"
+                                      "background-image: url(resources/del_button_hover.png);"
+                                      "border-radius: 2px"
                                       "}")
 
     def checkRegulations(self):

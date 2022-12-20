@@ -2,6 +2,7 @@ from datetime import datetime
 import json
 import os
 
+from interfase import MainWindow
 from interfase.Edit_window import Edit_Box
 
 
@@ -36,8 +37,8 @@ def new_affairs_json(affairs, name, text, data, priority):
             "priority": priority,
             "meta": [
                 {
-                    "add_data": datetime.datetime.now().strftime("%d.%m.%Y"),
-                    "add_time": datetime.datetime.now().strftime("%H:%M"),
+                    "add_data": datetime.now().strftime("%d.%m.%Y"),
+                    "add_time": datetime.now().strftime("%H:%M"),
                     "del_data": ""
                  }
             ]
@@ -127,10 +128,3 @@ def del_story_json():
             "affairs": []
         }
         json.dump(affair, fp, ensure_ascii=False, indent=2)
-
-def settings_button_clicked(self):
-    edit = Edit_Box(self)
-
-    edit.button_apply.clicked.connect(lambda: self.button_add_cliched(edit))
-
-    edit.exec()

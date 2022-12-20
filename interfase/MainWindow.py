@@ -246,24 +246,33 @@ class Ui_MainWindow(object):
 
         self.label_n_3.setText(affairs_json["name"])
 
-        self.delButton = QtWidgets.QPushButton(self.Item_n)
-        self.delButton.setGeometry(QtCore.QRect(705, 18, 15, 15))
-        self.delButton.setStyleSheet("QPushButton {"
+        self.apply = QtWidgets.QPushButton(self.Item_n)
+        self.apply.setGeometry(QtCore.QRect(705, 18, 15, 15))
+        self.apply.setCheckable(True)
+        self.apply.setChecked(False)
+        self.apply.setStyleSheet("QPushButton {"
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(169, 220, 170);"
-                                      "background-image: url(resources/del_button.png);"
+                                      "background-image: url(resources/apply_button_off.png);"
                                       "border-radius: 2px;"
                                       "}"
-                                      "QPushButton:hover {"
+                                  "QPushButton:hover {"
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(80, 172, 83);"
-                                      "background-image: url(resources/del_button_hover.png);"
+                                      "background-image: url(resources/apply_button_off_hover.png);"
+                                      "border-radius: 2px"
+                                      "}"
+                                      "QPushButton:checked {"
+                                      "border: none;"
+                                      "outline: none;"
+                                      "background-color: rgb(80, 172, 83);"
+                                      "background-image: url(resources/apply_button_on.png);"
                                       "border-radius: 2px"
                                       "}")
 
-        self.delButton.clicked.connect(lambda: self.del_box(n))
+        # self.apply.clicked.connect(lambda: self.del_box(n))
 
         self.settings_button = QtWidgets.QPushButton(self.Item_n)
         self.settings_button.setGeometry(QtCore.QRect(685, 18, 15, 15))
@@ -395,11 +404,12 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ToDo"))
 
-    def del_box(self, n):
+    def del_box(self, edit, n):
         config.num_add = config.num_add - 1
         functions.del_affairs_json(n)
         self.add_affair_story()
         self.repaint_Box()
+        edit.close()
 
     def repaint_Box(self):
         config.num_add = -1
@@ -444,6 +454,7 @@ class Ui_MainWindow(object):
         edit = Edit_Box(n)
 
         edit.button_apply.clicked.connect(lambda: self.apply_clicked(edit, n))
+        edit.delButton.clicked.connect(lambda: self.del_box(edit ,n))
 
         edit.exec()
 
