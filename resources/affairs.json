@@ -1,27 +1,40 @@
 {
   "affairs": [
     {
-      "name": "История дел",
-      "text": "разработать блоки для списка истории удаленных дел ",
-      "data": "",
-      "priority": 2,
+      "name": "",
+      "text": "",
+      "data": "01.02.2022",
+      "priority": 3,
       "meta": [
         {
-          "add_data": "10.12.2022",
-          "add_time": "20:32",
+          "add_data": "16.01.2023",
+          "add_time": "00:37",
           "del_data": ""
         }
       ]
     },
     {
-      "name": "настроить сортировку",
+      "name": "бебра",
       "text": "",
       "data": "",
-      "priority": 2,
+      "priority": 3,
       "meta": [
         {
-          "add_data": "10.12.2022",
-          "add_time": "12:00",
+          "add_data": "16.01.2023",
+          "add_time": "00:36",
+          "del_data": ""
+        }
+      ]
+    },
+    {
+      "name": "",
+      "text": "",
+      "data": "03.03.2023",
+      "priority": 1,
+      "meta": [
+        {
+          "add_data": "16.01.2023",
+          "add_time": "00:38",
           "del_data": ""
         }
       ]
