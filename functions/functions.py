@@ -2,10 +2,6 @@ from datetime import datetime
 import json
 import os
 
-from interfase import MainWindow
-from interfase.Edit_window import Edit_Box
-
-
 
 def initJson():
     with open("resources/affairs.json","r", encoding='utf-8') as fp:
@@ -37,6 +33,7 @@ def new_affairs_json(affairs, name, text, data, priority):
             "priority": priority,
             "meta": [
                 {
+                    "apply" : False,
                     "add_data": datetime.now().strftime("%d.%m.%Y"),
                     "add_time": datetime.now().strftime("%H:%M"),
                     "del_data": ""

@@ -110,12 +110,14 @@ class Add_Box (QtWidgets.QDialog):
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(169, 220, 170);"
+                                      "background-image: url(resources/apply_add_button.png);"
                                       "border-radius: 10px;"
                                       "}"
                                       "QPushButton:hover {"
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(80, 172, 83);"
+                                      "background-image: url(resources/apply_add_button_hover.png);"
                                       "border-radius: 10px"
                                       "}")
 

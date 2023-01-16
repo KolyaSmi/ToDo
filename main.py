@@ -29,8 +29,6 @@ class ToDo(QtWidgets.QMainWindow):
         self.ui.sortName.clicked.connect(lambda: self.sort_button_on(3))
         self.ui.buttonStory.clicked.connect(lambda: self.button_story_on())
         self.ui.del_button_story.clicked.connect(lambda: self.dialog_window())
-        # for button in config.settings_button_mass:
-        #     button.clicked.connect(lambda: self.)
 
     def new_affairs_window(self):
         add = Add_Box(self)
@@ -87,7 +85,6 @@ class ToDo(QtWidgets.QMainWindow):
             self.ui.sortData.setVisible(True)
             self.ui.sortPrior.setVisible(True)
             self.ui.show_affairs()
-            # self.ui.del_story()
             self.ui.hide_story()
             config.status_button_story = False
         else:

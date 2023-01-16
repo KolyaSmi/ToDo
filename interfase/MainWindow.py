@@ -272,7 +272,7 @@ class Ui_MainWindow(object):
                                       "border-radius: 2px"
                                       "}")
 
-        # self.apply.clicked.connect(lambda: self.del_box(n))
+        self.apply.clicked.connect(lambda: self.apply_box(n))
 
         self.settings_button = QtWidgets.QPushButton(self.Item_n)
         self.settings_button.setGeometry(QtCore.QRect(685, 18, 15, 15))
@@ -288,7 +288,6 @@ class Ui_MainWindow(object):
                                      "background-image: url(resources/settings_button_hover.png);"
                                      "border-radius: 2px"
                                      "}")
-        # self.settings_button.clicked(functions.settings_button_clicked())
         self.settings_button.clicked.connect(lambda: self.settings_button_clicked(n))
 
         if affairs_json["priority"] == 1:
@@ -399,6 +398,12 @@ class Ui_MainWindow(object):
         self.Item_n.setVisible(False)
 
         return self.Item_n
+
+    def apply_box(self,index):
+        config.num_add = config.num_add - 1
+        functions.del_affairs_json(index)
+        self.add_affair_story()
+        self.repaint_Box()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

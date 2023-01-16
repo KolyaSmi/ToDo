@@ -123,30 +123,32 @@ class Edit_Box (QtWidgets.QDialog):
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(169, 220, 170);"
+                                      "background-image: url(resources/apply_settings_button.png);"
                                       "border-radius: 10px;"
                                       "}"
                                       "QPushButton:hover {"
                                       "border: none;"
                                       "outline: none;"
                                       "background-color: rgb(80, 172, 83);"
+                                      "background-image: url(resources/apply_settings_button_hover.png);"
                                       "border-radius: 10px"
                                       "}")
 
         self.delButton = QtWidgets.QPushButton(self.frame)
-        self.delButton.setGeometry(QtCore.QRect(690, 210, 15, 15))
+        self.delButton.setGeometry(QtCore.QRect(663, 210, 32, 32))
         self.delButton.setStyleSheet("QPushButton {"
                                       "border: none;"
                                       "outline: none;"
-                                      "background-color: rgb(169, 220, 170);"
+                                      "background-color: rgb(233, 72, 72);"
                                       "background-image: url(resources/del_button.png);"
-                                      "border-radius: 2px;"
+                                      "border-radius: 10px;"
                                       "}"
                                       "QPushButton:hover {"
                                       "border: none;"
                                       "outline: none;"
-                                      "background-color: rgb(80, 172, 83);"
+                                      "background-color: rgb(187, 55, 55);"
                                       "background-image: url(resources/del_button_hover.png);"
-                                      "border-radius: 2px"
+                                      "border-radius: 10px"
                                       "}")
 
     def checkRegulations(self):
