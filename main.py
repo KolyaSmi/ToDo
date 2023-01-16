@@ -16,7 +16,7 @@ class ToDo(QtWidgets.QMainWindow):
         config.affairs_story = functions.init_story_json()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
+        self.setWindowIcon(QtGui.QIcon("resources/frame-1.png"))
         self.ui.repaint_Box()
         self.ui.add_story()
 
